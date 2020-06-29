@@ -4,6 +4,7 @@ $stmt = $conn->prepare('SELECT * FROM conferences');
 $stmt->execute();
 $stmt->setFetchMode(PDO::FETCH_ASSOC);
 $result = $stmt->fetchAll();
+//var_dump($result);
 $conn = null
 ?>
 <!doctype html>

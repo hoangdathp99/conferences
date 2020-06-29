@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
                 time = '$time',
                 img = '$img'
             WHERE id = '$id'";
-    var_dump($sql);
+//    var_dump($sql);
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     $conn = null;
