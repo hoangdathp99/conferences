@@ -20,7 +20,7 @@
 //            $customer_id = 'customer_id';
 //        var_dump($list_customer_of_conference);
 //        $conn = null;
-        $stmt = $conn->prepare("SELECT * FROM customers INNER JOIN conference_customer ON customers.id = conference_customer.customer_id");
+        $stmt = $conn->prepare("SELECT * FROM customers INNER JOIN conference_customer ON customers.id = conference_customer.customer_id AND conference_id = $conference_id");
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         $result = $stmt->fetchAll();
