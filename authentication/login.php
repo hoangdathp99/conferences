@@ -1,21 +1,22 @@
 <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
-//        if(isset($_POST['name'])) {$name = $_POST['name'];}
-//        if(isset($_POST['content'])) {$content = $_POST['content'];}
-//        if(isset($_POST['address'])) {$address = $_POST['address'];}
-//        if(isset($_POST['amount'])) {$amount = $_POST['amount'];}
-//        if(isset($_POST['time'])) {$time = $_POST['time'];}
-//        if(isset($_POST['img'])) {$img = $_POST['img'];}
-//
-//        include_once '../database/database.php';
-//        $sql = "INSERT INTO conferences (name , content, address, amount, time, img)
-//                    VALUES ('$name', '$content', '$address', '$amount', '$time', '$img')";
-//        $conn->exec($sql);
-//        $conn = null;
+        include_once '../database/database.php';
+        if(isset($_POST['username'])) {$name = $_POST['username'];}
+        if(isset($_POST['password'])) {$content = $_POST['password'];}
 
-        //check user & pass
-        // if dung =>
+        // tim admin co username = $username;
+
+        // select * from admin where username = $username
+        // admin = stmt.fetch;
+
+        /* if (admin['password'] == $password) {
+                header('location: http://localhost/conference/conference/display_conferences.php',true);
+            } else {
+                 hien thi thong bao sai mat khau
+            }
+        */
+
         header('location: http://localhost/conference/conference/display_conferences.php',true);
     }
 ?>
@@ -43,12 +44,12 @@
                 <form method="post" action="">
                     <div class="form-group">
                         <label for="exampleInputEmail1" style="color: white">User name</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter user name">
+                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter user name" name="username">
                         <small id="emailHelp" class="form-text text-muted" style="color: white">We'll never share your user name with anyone else.</small>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1" style="color: white">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">
                     </div>
                     <div style="text-align: center">
                         <button type="submit" class="btn btn-primary">Submit</button>

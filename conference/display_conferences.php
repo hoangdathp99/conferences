@@ -19,95 +19,62 @@ $conn = null
 </head>
 <body>
 <?php include '../layout/header.php'?>
-<div class="row mt-3">
-    <div class="col-9">
-        <h2>Customers List</h2>
-    </div>
-    <div class="col-3">
+<div class="container-fluid">
+    <div class="row mt-3">
+        <div class="col-9">
+            <h2>Customers List</h2>
+        </div>
+        <div class="col-3">
 
-        <a href="add_conference.php"><button class="btn btn-primary">Add new conference</button></a>
+            <a href="add_conference.php"><button class="btn btn-primary">Add new conference</button></a>
 
+        </div>
     </div>
-</div>
-<div class="table">
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Content</th>
-            <th>Address</th>
-            <th>Amount</th>
-            <th>Time</th>
-            <th>Image</th>
-            <th></th>
-        </tr>
-        </thead>
-        <tbody>
-            <?php foreach($result as $item): ?>
-                <tr>
-                <td><?php echo $item['id']?></td>
-                <td>
-                    <a href="../conference_customer/display.php?id=<?php echo $item['id']?>">
-                        <?php echo $item['name']?>
-                    </a>
-                </td>
-                <td>
-                    <a href="../html/cotent_<?php echo $item['id']?>.html">
-                    <?php echo $item['content']?>
-                    </a>
-                </td>
-                <td><?php echo $item['address']?></td>
-                <td><?php echo $item['amount']?></td>
-                <td><?php echo $item['time']?></td>
-                <td>
-                    <img src="<?php echo $item['img']?>" width="300" height="200"/>
-                </td>
-                <td>
-                    <span><a href="edit_conference.php?id=<?php echo $item['id']?>">Update</a></span>
-                    <span><a href="delete_conference.php?id=<?php echo $item['id']?>">Delete</a></span>
-                </td>
+    <div class="table">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Content</th>
+                <th>Address</th>
+                <th>Amount</th>
+                <th>Time</th>
+                <th>Image</th>
+                <th></th>
             </tr>
-        <?php endforeach; ?>
-        </tbody>
-    </table>
-<!--    <table>-->
-<!--        <tr>-->
-<!--            <th>ID</th>-->
-<!--            <th>Name</th>-->
-<!--            <th>Content</th>-->
-<!--            <th>Address</th>-->
-<!--            <th>Amount</th>-->
-<!--            <th>Time</th>-->
-<!--            <th>Image</th>-->
-<!--        </tr>-->
-<!---->
-<!--        --><?php //foreach($result as $item): ?>
-<!--            <tr>-->
-<!--                <td>--><?php //echo $item['id']?><!--</td>-->
-<!--                <td>-->
-<!--                    <a href="../conference_customer/display.php?id=--><?php //echo $item['id']?><!--">-->
-<!--                        --><?php //echo $item['name']?>
-<!--                    </a>-->
-<!--                </td>-->
-<!--                <td>--><?php //echo $item['content']?><!--</td>-->
-<!--                <td>--><?php //echo $item['address']?><!--</td>-->
-<!--                <td>--><?php //echo $item['amount']?><!--</td>-->
-<!--                <td>--><?php //echo $item['time']?><!--</td>-->
-<!--                <td>-->
-<!--                    <img src="--><?php //echo $item['img']?><!--" width="300" height="200"/>-->
-<!--                </td>-->
-<!--                <td>-->
-<!--                    <span><a href="edit_conference.php?id=--><?php //echo $item['id']?><!--">Update</a></span>-->
-<!--                    <span><a href="delete_conference.php?id=--><?php //echo $item['id']?><!--">Delete</a></span>-->
-<!--                </td>-->
-<!--            </tr>-->
-<!--        --><?php //endforeach; ?>
-<!---->
-<!--    </table>-->
+            </thead>
+            <tbody>
+                <?php foreach($result as $item): ?>
+                    <tr>
+                    <td><?php echo $item['id']?></td>
+                    <td>
+                        <a href="../conference_customer/display.php?id=<?php echo $item['id']?>">
+                            <?php echo $item['name']?>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="../html/cotent_<?php echo $item['id']?>.html">
+                        <?php echo $item['content']?>
+                        </a>
+                    </td>
+                    <td><?php echo $item['address']?></td>
+                    <td><?php echo $item['amount']?></td>
+                    <td><?php echo $item['time']?></td>
+                    <td>
+                        <img src="<?php echo $item['img']?>" width="300" height="200"/>
+                    </td>
+                    <td>
+                        <span><a href="edit_conference.php?id=<?php echo $item['id']?>">Update</a></span>
+                        <span><a href="delete_conference.php?id=<?php echo $item['id']?>">Delete</a></span>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
 </div>
 
 <?php include '../layout/footer.php'?>
-<?php  ?>
 </body>
 </html>

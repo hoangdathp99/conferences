@@ -1,3 +1,5 @@
 <?php
 ?>
-<div class="footer">2019 PTK</div>
+<div class="container-fluid">
+    <div class="footer">2020 HQD</div>
+</div>
