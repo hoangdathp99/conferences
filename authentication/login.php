@@ -1,5 +1,6 @@
 <?php
-
+$url = 'http://localhost/conference/';
+include '../layout/header.php'
 ?>
 
 <!doctype html>
@@ -33,7 +34,8 @@
                         <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
                     </div>
                     <div style="text-align: center">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+<!--                        <button type="submit" class="btn btn-primary">Submit</button>-->
+                        <a href="../customer/display_customers.php"><button class="btn btn-primary">Login</button></a>
                     </div>
                 </form>
             </div>

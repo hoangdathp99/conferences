@@ -45,7 +45,7 @@
     </div>
     <div class="col-3">
 
-        <a href="add_customer.php"><button class="btn btn-primary">Add new customer</button></a>
+        <a href="../customer/add_customer.php"><button class="btn btn-primary">Add new customer</button></a>
 
     </div>
 </div>
@@ -64,13 +64,13 @@
         <tbody>
         <?php foreach($result as $item): ?>
             <tr>
-                <td><?php echo $item['id']?></td>
+                <td><?php echo $item['customer_id']?></td>
                 <td><?php echo $item['name']?></td>
                 <td><?php echo $item['email']?></td>
                 <td><?php echo $item['phone']?></td>
                 <td>
-                    <span><a href="edit_customer.php?id=<?php echo $item['id']?>">Update</a></span>
-                    <span><a href="delete_customer.php?id=<?php echo $item['id']?>">Delete</a></span>
+                    <span><a href="../customer/edit_customer.php?id=<?php echo $item['customer_id']?>">Update</a></span>
+                    <span><a href="../customer/delete_customer.php?id=<?php echo $item['customer_id']?>">Delete</a></span>
                 </td>
             </tr>
         <?php endforeach; ?>
