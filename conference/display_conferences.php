@@ -20,7 +20,7 @@ $conn = null
 <body>
 <?php include '../layout/header.php'?>
 <h2>Conferences List</h2>
-<div class="table">
+<div>
     <table>
         <tr>
             <th>ID</th>

@@ -1,6 +1,23 @@
 <?php
-$url = 'http://localhost/conference/';
-include '../layout/header.php'
+    if ($_SERVER["REQUEST_METHOD"] == "POST")
+    {
+//        if(isset($_POST['name'])) {$name = $_POST['name'];}
+//        if(isset($_POST['content'])) {$content = $_POST['content'];}
+//        if(isset($_POST['address'])) {$address = $_POST['address'];}
+//        if(isset($_POST['amount'])) {$amount = $_POST['amount'];}
+//        if(isset($_POST['time'])) {$time = $_POST['time'];}
+//        if(isset($_POST['img'])) {$img = $_POST['img'];}
+//
+//        include_once '../database/database.php';
+//        $sql = "INSERT INTO conferences (name , content, address, amount, time, img)
+//                    VALUES ('$name', '$content', '$address', '$amount', '$time', '$img')";
+//        $conn->exec($sql);
+//        $conn = null;
+
+        //check user & pass
+        // if dung =>
+        header('location: http://localhost/conference/conference/display_conferences.php',true);
+    }
 ?>
 
 <!doctype html>
@@ -34,8 +51,7 @@ include '../layout/header.php'
                         <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
                     </div>
                     <div style="text-align: center">
-<!--                        <button type="submit" class="btn btn-primary">Submit</button>-->
-                        <a href="../customer/display_customers.php"><button class="btn btn-primary">Login</button></a>
+                        <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </form>
             </div>
