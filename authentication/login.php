@@ -1,23 +1,35 @@
 <?php
-    if ($_SERVER["REQUEST_METHOD"] == "POST")
-    {
+    $username = '';
+    $password = '';
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
         include_once '../database/database.php';
-        if(isset($_POST['username'])) {$name = $_POST['username'];}
-        if(isset($_POST['password'])) {$content = $_POST['password'];}
+        var_dump($conn);
+        //if (isset($_POST['username'])) {
+        //    $username = $_POST['username'];
+       // }
+       // if (isset($_POST['password'])) {
+         //   $password = $_POST['password'];
+       // }
+        //var_dump($conn);
 
+        //$stmt_login = $conn->prepare("SELECT * FROM admins WHERE username = $username");
+        //var_dump($stmt_login);
+        //$stmt_login->execute();
+        //$stmt_login->setFetchMode(PDO::FETCH_ASSOC);
+        //$admin = $stmt_login->fetch();
+        //$conn = null;
+        //var_dump($admin);
         // tim admin co username = $username;
 
         // select * from admin where username = $username
         // admin = stmt.fetch;
 
-        /* if (admin['password'] == $password) {
-                header('location: http://localhost/conference/conference/display_conferences.php',true);
-            } else {
-                 hien thi thong bao sai mat khau
-            }
-        */
+//         if (admin['password'] == $password) {
+//                header('location: http://localhost/conference/conference/display_conferences.php',true);
+//            }
 
-        header('location: http://localhost/conference/conference/display_conferences.php',true);
+
+        //header('location: http://localhost/conference/conference/display_conferences.php', true);
     }
 ?>
 
@@ -36,14 +48,14 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="bg">
+    <div>
         <div class="container-fluid row">
             <div class="col-1"></div>
             <div class="col-4 mt-5">
                 <div class="h2 mb-3" style="text-align: center; color: white">LOGIN</div>
-                <form method="post" action="">
+                <form method="POST" action="">
                     <div class="form-group">
-                        <label for="exampleInputEmail1" style="color: white">User name</label>
+                        <label for="exampleInputEmail1" style="color: white">Username</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter user name" name="username">
                         <small id="emailHelp" class="form-text text-muted" style="color: white">We'll never share your user name with anyone else.</small>
                     </div>

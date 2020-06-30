@@ -22,7 +22,7 @@ $conn = null
 <div class="container-fluid">
     <div class="row mt-3">
         <div class="col-9">
-            <h2>Customers List</h2>
+            <h2>Conferences List</h2>
         </div>
         <div class="col-3">
 
