@@ -15,13 +15,23 @@ $conn = null
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>United</title>
-    <link type="text/css" rel="stylesheet" href="../css/main.css">
+<!--    <link type="text/css" rel="stylesheet" href="../css/main.css">-->
 </head>
 <body>
 <?php include '../layout/header.php'?>
-<h2>Conferences List</h2>
+<div class="row mt-3">
+    <div class="col-9">
+        <h2>Customers List</h2>
+    </div>
+    <div class="col-3">
+
+        <a href="add_conference.php"><button class="btn btn-primary">Add new conference</button></a>
+
+    </div>
+</div>
 <div class="table">
-    <table>
+    <table class="table table-striped">
+        <thead>
         <tr>
             <th>ID</th>
             <th>Name</th>
@@ -30,17 +40,23 @@ $conn = null
             <th>Amount</th>
             <th>Time</th>
             <th>Image</th>
+            <th></th>
         </tr>
-
-        <?php foreach($result as $item): ?>
-            <tr>
+        </thead>
+        <tbody>
+            <?php foreach($result as $item): ?>
+                <tr>
                 <td><?php echo $item['id']?></td>
                 <td>
                     <a href="../conference_customer/display.php?id=<?php echo $item['id']?>">
                         <?php echo $item['name']?>
                     </a>
                 </td>
-                <td><?php echo $item['content']?></td>
+                <td>
+                    <a href="../html/cotent_<?php echo $item['id']?>.html">
+                    <?php echo $item['content']?>
+                    </a>
+                </td>
                 <td><?php echo $item['address']?></td>
                 <td><?php echo $item['amount']?></td>
                 <td><?php echo $item['time']?></td>
@@ -53,10 +69,44 @@ $conn = null
                 </td>
             </tr>
         <?php endforeach; ?>
-
+        </tbody>
     </table>
+<!--    <table>-->
+<!--        <tr>-->
+<!--            <th>ID</th>-->
+<!--            <th>Name</th>-->
+<!--            <th>Content</th>-->
+<!--            <th>Address</th>-->
+<!--            <th>Amount</th>-->
+<!--            <th>Time</th>-->
+<!--            <th>Image</th>-->
+<!--        </tr>-->
+<!---->
+<!--        --><?php //foreach($result as $item): ?>
+<!--            <tr>-->
+<!--                <td>--><?php //echo $item['id']?><!--</td>-->
+<!--                <td>-->
+<!--                    <a href="../conference_customer/display.php?id=--><?php //echo $item['id']?><!--">-->
+<!--                        --><?php //echo $item['name']?>
+<!--                    </a>-->
+<!--                </td>-->
+<!--                <td>--><?php //echo $item['content']?><!--</td>-->
+<!--                <td>--><?php //echo $item['address']?><!--</td>-->
+<!--                <td>--><?php //echo $item['amount']?><!--</td>-->
+<!--                <td>--><?php //echo $item['time']?><!--</td>-->
+<!--                <td>-->
+<!--                    <img src="--><?php //echo $item['img']?><!--" width="300" height="200"/>-->
+<!--                </td>-->
+<!--                <td>-->
+<!--                    <span><a href="edit_conference.php?id=--><?php //echo $item['id']?><!--">Update</a></span>-->
+<!--                    <span><a href="delete_conference.php?id=--><?php //echo $item['id']?><!--">Delete</a></span>-->
+<!--                </td>-->
+<!--            </tr>-->
+<!--        --><?php //endforeach; ?>
+<!---->
+<!--    </table>-->
 </div>
-<a href="add_conference.php" type="button">Add new conferences</a>
+
 <?php include '../layout/footer.php'?>
 <?php  ?>
 </body>
