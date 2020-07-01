@@ -46,7 +46,7 @@ $conn = null
                     <td><?php echo $item['conference_id']?></td>
                         <td>
                             <span><a href="http://localhost/conference/request/apply_customer.php?guest_id=<?php echo $item['id'] ?>">Apply</a></span>
-                            <span><a href="delete_customer.php?id=<?php echo $item['id']?>">Delete</a></span>
+                            <span><a href="delete_customer_guest.php?id=<?php echo $item['id']?>">Delete</a></span>
                         </td>
                 </tr>
             <?php endforeach; ?>

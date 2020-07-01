@@ -21,6 +21,10 @@
         $sql_create_conference_customer = "INSERT INTO conference_customer (conference_id, customer_id)
                 VALUES ('$conference_id', '$customer_id')";
         $conn->exec($sql_create_conference_customer);
+
+        $sql = "DELETE FROM request
+            WHERE id = $guest_id";
+        $conn->exec($sql);
         $conn = null;
 
         header('location: http://localhost/conference/customer/display_customers.php',true);
