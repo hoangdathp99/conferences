@@ -38,7 +38,7 @@ $conn = null
                 <th>Name</th>
                 <th>Content</th>
                 <th>Address</th>
-                <th>Amount</th>
+                <th>Max Amount</th>
                 <th>Time</th>
                 <th>Image</th>
                 <th></th>

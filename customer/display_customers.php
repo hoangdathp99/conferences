@@ -17,6 +17,7 @@ $conn = null
 </head>
 <body>
 <?php include '../layout/header.php'?>
+<div class="container-fluid">
 <div class="row mt-3">
     <div class="col-9">
         <h2>Customers List</h2>
@@ -77,6 +78,7 @@ $conn = null
 <!--        --><?php //endforeach; ?>
 <!---->
 <!--    </table>-->
+</div>
 </div>
 
 <?php include '../layout/footer.php'?>

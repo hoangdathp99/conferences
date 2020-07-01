@@ -22,20 +22,40 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     if (isset($_POST['conference_id'])) {
         $conference_id = $_POST['conference_id'];
     }
+    $stmt_conference = $conn->prepare("SELECT * FROM conferences WHERE id = $conference_id");
+    $stmt_conference->execute();
+    $stmt_conference->setFetchMode(PDO::FETCH_ASSOC);
+    $conference = $stmt_conference->fetch();
 
-    $sql_create_customer = "INSERT INTO customers (name, email, phone)
+    $stmt_check_amount = $conn->prepare("SELECT COUNT(id) FROM conference_customer WHERE conference_id = $conference_id");
+    $stmt_check_amount->execute();
+    $stmt_check_amount->setFetchMode(PDO::FETCH_ASSOC);
+    $amount = $stmt_check_amount->fetch();
+//    var_dump($amount['COUNT(id)']);
+    if ($amount['COUNT(id)'] <= $conference['amount']){
+        $sql_create_customer = "INSERT INTO customers (name, email, phone)
                 VALUES ('$name', '$email', '$phone')";
-    $conn->exec($sql_create_customer);
-    $customer_id = $conn->lastInsertId();
+        $conn->exec($sql_create_customer);
+        $customer_id = $conn->lastInsertId();
 //    var_dump($customer_id);
 //    $conn = null;
 
-    $sql_create_conference_customer = "INSERT INTO conference_customer (conference_id, customer_id)
+        $sql_create_conference_customer = "INSERT INTO conference_customer (conference_id, customer_id)
                 VALUES ('$conference_id', '$customer_id')";
-    $conn->exec($sql_create_conference_customer);
-    $conn = null;
+        $conn->exec($sql_create_conference_customer);
+        $conn = null;
+        header('location: http://localhost/conference/customer/display_customers.php',true);
 
-    header('location: http://localhost/conference/customer/display_customers.php',true);
+    }
+    else {
+        function phpAlert($msg) {
+            echo '<script type="text/javascript">alert("' . $msg . '")</script>';
+        }
+        phpAlert("Đã hết chỗ, vui lòng chọn hội nghị khác");
+    }
+
+
+//    header('location: http://localhost/conference/customer/display_customers.php',true);
 }
 ?>
 <!doctype html>

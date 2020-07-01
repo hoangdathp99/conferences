@@ -27,8 +27,11 @@ $url = 'http://localhost/conference/';
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
 <body>
+<div class="jumbotron text-center" style="margin-bottom:0">
+    <h1>Trang Web quản lý cuộc hội thảo</h1>
+</div>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="http://localhost/conference/index.php">Dang xuat</a>
+    <a class="navbar-brand" href="http://localhost/conference/index.php">Đăng xuất</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -39,10 +42,10 @@ $url = 'http://localhost/conference/';
 <!--                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>-->
 <!--            </li>-->
             <li class="nav-item">
-                <a class="nav-link" href="http://localhost/conference/customer/display_customers.php">DANH SACH KHACH HANG</a>
+                <a class="nav-link" href="http://localhost/conference/customer/display_customers.php">Danh sách khách hàng</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="http://localhost/conference/conference/display_conferences.php">DANH SACH CUOC HOI THAO</a>
+                <a class="nav-link" href="http://localhost/conference/conference/display_conferences.php">Danh sách hội thảo</a>
             </li>
 <!--            <li class="nav-item">-->
 <!--                <a class="nav-link disabled" href="#">Disabled</a>-->
