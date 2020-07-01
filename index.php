@@ -82,18 +82,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <!-- Tabs Titles -->
 
         <!-- Icon -->
-        <div class="fadeIn first">
+        <div class="fadeIn first mt-3">
             <h2>Quản lý hội thảo</h2>
         </div>
 
         <!-- Login Form -->
         <form method="post">
-            <input type="text" id="login" class="fadeIn second" name="username" placeholder="login">
+            <input type="text" id="login" class="fadeIn second" name="username" placeholder="username">
             <input type="text" id="password" class="fadeIn third" name="password" placeholder="password">
             <input type="submit" class="fadeIn fourth" value="Log In">
         </form>
         <div>
-            <a class = "fadeIn fourth" href="guest/display_conferences_guest.php"><button class="btn btn-primary">I'm a guest</button></a>
+            <a class = "fadeIn fourth mb-3" href="guest/display_conferences_guest.php"><button class="btn btn-primary">I'm a guest</button></a>
         </div>
         <!-- Remind Passowrd -->
         <div id="formFooter">

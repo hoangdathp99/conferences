@@ -1,11 +1,10 @@
 <?php
-include_once '../database/database.php';
-$stmt = $conn->prepare('SELECT * FROM conferences');
-$stmt->execute();
-$stmt->setFetchMode(PDO::FETCH_ASSOC);
-$result = $stmt->fetchAll();
-//var_dump($result);
-$conn = null
+    include_once '../database/database.php';
+    $stmt = $conn->prepare('SELECT * FROM conferences');
+    $stmt->execute();
+    $stmt->setFetchMode(PDO::FETCH_ASSOC);
+    $result = $stmt->fetchAll();
+    $conn = null
 ?>
 <!doctype html>
 <html lang="en">
