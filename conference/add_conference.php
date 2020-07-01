@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 </head>
 <body>
 <?php include '../layout/header.php'?>
-<h2>Add new book</h2>
+<h2>Add new conference</h2>
 <div class="table">
     <form method="post" action="">
         <table>

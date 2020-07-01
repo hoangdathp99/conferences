@@ -92,7 +92,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <input type="text" id="password" class="fadeIn third" name="password" placeholder="password">
             <input type="submit" class="fadeIn fourth" value="Log In">
         </form>
-
+        <div>
+            <a class = "fadeIn fourth" href="guest/display_conferences_guest.php"><button class="btn btn-primary">I'm a guest</button></a>
+        </div>
         <!-- Remind Passowrd -->
         <div id="formFooter">
             <a class="underlineHover" href="#">Forgot Password?</a>
