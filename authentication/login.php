@@ -48,28 +48,52 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="bg">
-        <div class="container-fluid row">
-            <div class="col-1"></div>
-            <div class="col-4 mt-5">
-                <div class="h2 mb-3" style="text-align: center; color: white">LOGIN</div>
-                <form method="POST" action="">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1" style="color: white">Username</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter user name" name="username">
-                        <small id="emailHelp" class="form-text text-muted" style="color: white">We'll never share your user name with anyone else.</small>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1" style="color: white">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">
-                    </div>
-                    <div style="text-align: center">
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </div>
-                </form>
-            </div>
-            <div class="col-7"></div>
+<!--    <div class="bg">-->
+<!--        <div class="container-fluid row">-->
+<!--            <div class="col-1"></div>-->
+<!--            <div class="col-4 mt-5">-->
+<!--                <div class="h2 mb-3" style="text-align: center; color: white">LOGIN</div>-->
+<!--                <form method="POST" action="">-->
+<!--                    <div class="form-group">-->
+<!--                        <label for="exampleInputEmail1" style="color: white">Username</label>-->
+<!--                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter user name" name="username">-->
+<!--                        <small id="emailHelp" class="form-text text-muted" style="color: white">We'll never share your user name with anyone else.</small>-->
+<!--                    </div>-->
+<!--                    <div class="form-group">-->
+<!--                        <label for="exampleInputPassword1" style="color: white">Password</label>-->
+<!--                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">-->
+<!--                    </div>-->
+<!--                    <div style="text-align: center">-->
+<!--                        <button type="submit" class="btn btn-primary">Submit</button>-->
+<!--                    </div>-->
+<!--                </form>-->
+<!--            </div>-->
+<!--            <div class="col-7"></div>-->
+<!--        </div>-->
+<!--    </div>-->
+<div class="sidenav">
+    <div class="login-main-text">
+        <h2>Application<br> Login Page</h2>
+        <p>Login or register from here to access.</p>
+    </div>
+</div>
+<div class="main">
+    <div class="col-md-6 col-sm-12">
+        <div class="login-form">
+            <form>
+                <div class="form-group">
+                    <label>User Name</label>
+                    <input type="text" class="form-control" placeholder="User Name">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" class="form-control" placeholder="Password">
+                </div>
+                <button type="submit" class="btn btn-black">Login</button>
+                <button type="submit" class="btn btn-secondary">Register</button>
+            </form>
         </div>
     </div>
+</div>
 </body>
 </html>
