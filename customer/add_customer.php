@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     $stmt_check_amount->setFetchMode(PDO::FETCH_ASSOC);
     $amount = $stmt_check_amount->fetch();
 //    var_dump($amount['COUNT(id)']);
-    if ($amount['COUNT(id)'] <= $conference['amount']){
+    if ($amount['COUNT(id)'] < $conference['amount']){
         $sql_create_customer = "INSERT INTO customers (name, email, phone)
                 VALUES ('$name', '$email', '$phone')";
         $conn->exec($sql_create_customer);

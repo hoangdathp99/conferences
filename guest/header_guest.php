@@ -28,10 +28,10 @@ $url = 'http://localhost/conference/';
 </head>
 <body>
 <div class="jumbotron text-center" style="margin-bottom:0">
-    <h1>Trang Web quản lý cuộc hội thảo</h1>
+    <h1>Chao mừng đến với các cuộc hội thảo sắp tới</h1>
 </div>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="http://localhost/conference/index.php">Đăng xuất</a>
+    <a class="navbar-brand" href="http://localhost/conference/index.php">Thoát</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
