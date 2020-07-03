@@ -31,20 +31,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     $stmt_check_amount->execute();
     $stmt_check_amount->setFetchMode(PDO::FETCH_ASSOC);
     $amount = $stmt_check_amount->fetch();
-//    var_dump($amount['COUNT(id)']);
     if ($amount['COUNT(id)'] <= $conference['amount']){
         $sql_create_customer = "INSERT INTO request (name, email, phone, conference_id)
                 VALUES ('$name', '$email', '$phone', '$conference_id')";
         $conn->exec($sql_create_customer);
         $customer_id = $conn->lastInsertId();
-//    var_dump($customer_id);
-//    $conn = null;
-
-//        $sql_create_conference_customer = "INSERT INTO conference_customer (conference_id, customer_id)
-//                VALUES ('$conference_id', '$customer_id')";
-//        $conn->exec($sql_create_conference_customer);
         $conn = null;
-        header('location: http://localhost/conference/guest/display_customer_guest.php',true);
+        header('location: http://localhost/conference/guest/display_conferences_guest.php',true);
 
     }
     else {
