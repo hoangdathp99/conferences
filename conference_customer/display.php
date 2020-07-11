@@ -6,6 +6,10 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
     if(isset($_GET['id'])) {
         $conference_id = $_GET['id'];
     }
+    $stmt_check_amount = $conn->prepare("SELECT COUNT(id) FROM conference_customer WHERE conference_id = $conference_id");
+    $stmt_check_amount->execute();
+    $stmt_check_amount->setFetchMode(PDO::FETCH_ASSOC);
+    $amount = $stmt_check_amount->fetch();
 
     $stmt_conference = $conn->prepare("SELECT * FROM conferences WHERE id = $conference_id");
     $stmt_conference->execute();
@@ -66,11 +70,15 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
                     <div class="sb-sidenav-menu-heading">Danh sách</div>
                     <a class="nav-link" href="http://localhost/conference/conference/display_conferences.php">
                         <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                        Conferences
+                        Các cuộc hội thảo
                     </a>
                     <a class="nav-link" href="../customer/display_customers.php">
                         <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                        Customers
+                        Người tham gia
+                    </a>
+                    <a class="nav-link" href="../request/request_add_customer.php">
+                        <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                        Yêu cầu tham gia
                     </a>
 
 
@@ -85,7 +93,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid">
-                <h1 class="mt-4">Tables</h1>
+                <h1 class="mt-4">Danh sách</h1>
                 <ol class="breadcrumb mb-4">
                     <li class="breadcrumb-item"><a href="http://localhost/conference/conference/display_conferences.php">Conferences</a></li>
                 </ol>
@@ -103,6 +111,9 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
                                 Add customer</button>
                         </a>
 
+                    </div>
+                    <div class="col-9">
+                        <h2>Số lượng tham gia : <?php echo $amount['COUNT(id)']?></h2>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -124,8 +135,8 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
                                         <td><?php echo $item['email']?></td>
                                         <td><?php echo $item['phone']?></td>
                                         <td>
-                                            <span><a href="../customer/edit_customer.php?id=<?php echo $item['id']?>">Update</a></span>
-                                            <span><a href="../customer/delete_customer.php?id=<?php echo $item['id']?>">Delete</a></span>
+                                            <span><a href="../customer/edit_customer.php?id=<?php echo $item['customer_id']?>">Update</a></span>
+                                            <span><a href="../customer/delete_customer.php?id=<?php echo $item['customer_id']?>">Delete</a></span>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>

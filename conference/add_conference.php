@@ -24,53 +24,113 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     header('location: http://localhost/conference/conference/display_conferences.php',true);
 }
 ?>
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <!-- Required meta tags-->
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Library Manager</title>
-    <link type="text/css" rel="stylesheet" href="../css/main.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Colorlib Templates">
+    <meta name="author" content="Colorlib">
+    <meta name="keywords" content="Colorlib Templates">
+
+    <!-- Title Page-->
+    <title></title>
+
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+
+    <!-- Main CSS-->
+    <link href="../css/main.css" rel="stylesheet" media="all">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
+
 <body>
-<?php include '../layout/header.php'?>
-<h2>Add new conference</h2>
-<div class="table">
-    <form method="post" action="">
-        <table>
-            <tr>
-                <td>Name</td>
-                <td><input type="text" name="name" size="20"></td>
-            </tr>
-            <tr>
-                <td>Content</td>
-                <td><input type="text" name="content" size="20"></td>
-            </tr>
-            <tr>
-                <td>Address</td>
-                <td><input type="text" name="address" size="20"></td>
-            </tr>
-            <tr>
-                <td>Amount</td>
-                <td><input type="text" name="amount" size="20"></td>
-            </tr>
-            <tr>
-                <td>Time</td>
-                <td><input type="datetime-local" name="time" size="20"></td>
-            </tr>
-            <tr>
-                <td>Img</td>
-                <td><input type="text" name="img" size="20"></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td><button type="submit">Add</button></td>
-            </tr>
-        </table>
-    </form>
+<div class="page-wrapper bg-dark p-t-100 p-b-50">
+    <div class="wrapper wrapper--w900">
+        <div class="card card-6">
+            <div>
+                <h2 >Thêm mới hội thảo</h2>
+            </div>
+            <div class="card-body">
+                <form method="POST">
+                    <div class="form-row">
+                        <div class="name">Tên hội thảo</div>
+                        <div class="value">
+                            <input class="input--style-6" type="text" name="name">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="name">Nội dung</div>
+                        <div class="value">
+                            <input class="input--style-6" type="text" name="content">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="name">Địa chỉ</div>
+                        <div class="value">
+                            <div class="input-group">
+                                <input class="input--style-6" type="text" name="address">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="name">Số lượng tối đa</div>
+                        <div class="value">
+                            <input class="input--style-6" type="text" name="amount">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="name">Thời gian diễn ra</div>
+                        <div class="value">
+                            <input class="input--style-6" type="datetime-local" name="time">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="name">Ảnh</div>
+                        <div class="value">
+                            <input class="input--style-6" type="text" name="img">
+                        </div>
+                    </div>
+                    <!--                        <div class="form-row">-->
+                    <!--                            <div class="name">Phone</div>-->
+                    <!--                            <div class="value">-->
+                    <!--                                <div class="input-group">-->
+                    <!--                                    <input class="input&#45;&#45;style-6" type="text" name="phone" placeholder="Message sent to the employer"></input>-->
+                    <!--                                </div>-->
+                    <!--                            </div>-->
+                    <!--                        </div>-->
+                    <!--                        <div class="form-row">-->
+                    <!--                            <div class="name">Conferences</div>-->
+                    <!--                            <div class="value">-->
+                    <!--                                <select name="conference_id">-->
+                    <!--                                    <?php foreach($all_conferences as $conference): ?>-->
+                    <!--                                    <option value="<?php echo $conference['id'] ?>"><?php echo $conference['name'] ?></option>-->
+                    <!--                                    <?php endforeach; ?>-->
+                    <!--                                </select>-->
+
+                    <!--                        </div>-->
+                    <!--                        </div>-->
+
+                    <div class="card-footer">
+                        <button class="btn btn--radius-2 btn--blue-2" type="submit">Thêm</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
 </div>
-<?php include '../layout/footer.php'?>
-</body>
+
+<!-- Jquery JS-->
+<script src="vendor/jquery/jquery.min.js"></script>
+
+
+<!-- Main JS-->
+<script src="js/global.js"></script>
+
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+
 </html>
+<!-- end document-->

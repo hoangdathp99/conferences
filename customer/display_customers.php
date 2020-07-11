@@ -1,10 +1,12 @@
 <?php
-include_once '../database/database.php';
+include '../database/database.php';
+
+
 $stmt = $conn->prepare('SELECT * FROM customers');
 $stmt->execute();
 $stmt->setFetchMode(PDO::FETCH_ASSOC);
 $result = $stmt->fetchAll();
-$conn = null
+$conn=null
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,22 +45,22 @@ $conn = null
                     <div class="sb-sidenav-menu-heading">Danh sách</div>
                     <a class="nav-link" href="http://localhost/conference/conference/display_conferences.php">
                         <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                        Conferences
+                        Các cuộc hội thảo
                     </a>
                     <a class="nav-link" href="../customer/display_customers.php">
                         <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                        Customers
+                        Khách tham gia
                     </a>
                     <a class="nav-link" href="../request/request_add_customer.php">
                         <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                        Requests
+                        Yêu cầu tham gia
                     </a>
 
 
                 </div>
             </div>
             <div class="sb-sidenav-footer">
-                <div class="small">Logged in as:</div>
+                <div class="small">Đăng nhâp với quyền:</div>
                 Admin
             </div>
         </nav>
@@ -66,7 +68,7 @@ $conn = null
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid">
-                <h1 class="mt-4">Tables</h1>
+                <h1 class="mt-4">Danh sách</h1>
                 <ol class="breadcrumb mb-4">
 <!--                    <li class="breadcrumb-item"><a href="http://localhost/conference/conference/display_conferences.php">Conferences</a></li>-->
                     <li class="breadcrumb-item active">Khách tham dự</li>
@@ -92,9 +94,9 @@ $conn = null
                                 <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Name</th>
+                                    <th>Tên</th>
                                     <th>Email</th>
-                                    <th>Phone</th>
+                                    <th>Số điện thoại</th>
                                     <th></th>
                                 </tr>
                                 </thead>

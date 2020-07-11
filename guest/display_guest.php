@@ -6,6 +6,10 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
     if(isset($_GET['id'])) {
         $conference_id = $_GET['id'];
     }
+    $stmt_check_amount = $conn->prepare("SELECT COUNT(id) FROM conference_customer WHERE conference_id = $conference_id");
+    $stmt_check_amount->execute();
+    $stmt_check_amount->setFetchMode(PDO::FETCH_ASSOC);
+    $amount = $stmt_check_amount->fetch();
 
     $stmt_conference = $conn->prepare("SELECT * FROM conferences WHERE id = $conference_id");
     $stmt_conference->execute();
@@ -66,12 +70,12 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
                     <div class="sb-sidenav-menu-heading">Danh sách</div>
                     <a class="nav-link" href="http://localhost/conference/guest/display_conferences_guest.php">
                         <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                        Conferences
+                        Các cuộc hội thảo
                     </a>
                 </div>
             </div>
             <div class="sb-sidenav-footer">
-                <div class="small">Logged in as:</div>
+                <div class="small">Đăng nhập với quyền:</div>
                 Guest
             </div>
         </nav>
@@ -79,14 +83,14 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid">
-                <h1 class="mt-4">Tables</h1>
+                <h1 class="mt-4">Danh sách</h1>
                 <ol class="breadcrumb mb-4">
                     <li class="breadcrumb-item"><a href="http://localhost/conference/guest/display_conferences_guest.php">Conferences</a></li>
                 </ol>
                 <div class="card mb-4">
                     <div class="card-header" class="col-9">
                         <i class="fas fa-table mr-1"></i>
-                        Danh sách khach moi
+                        Danh sách khách tham dự
                     </div>
                     <div class="col-3">
 
@@ -97,6 +101,10 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
                                 Đăng ký tham gia</button>
                         </a>
 
+
+                    </div>
+                    <div class="col-9">
+                        <h2>Số lượng tham gia : <?php echo $amount['COUNT(id)']?></h2>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -104,7 +112,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
                                 <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Name</th>
+                                    <th>Tên</th>
                                     <th>Email</th>
                                     
                                 </tr>
@@ -129,16 +137,17 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
             </div>
         </main>
         <footer class="py-4 bg-light mt-auto">
-            <div class="container-fluid">
-                <div class="d-flex align-items-center justify-content-between small">
-                    <div class="text-muted">Copyright &copy; Your Website 2020</div>
-                    <div>
-                        <a href="#">Privacy Policy</a>
-                        &middot;
-                        <a href="#">Terms &amp; Conditions</a>
-                    </div>
-                </div>
-            </div>
+            <?php include '../layout/footer.php'?>
+<!--            <div class="container-fluid">-->
+<!--                <div class="d-flex align-items-center justify-content-between small">-->
+<!--                    <div class="text-muted">Copyright &copy; Your Website 2020</div>-->
+<!--                    <div>-->
+<!--                        <a href="#">Privacy Policy</a>-->
+<!--                        &middot;-->
+<!--                        <a href="#">Terms &amp; Conditions</a>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
         </footer>
     </div>
 </div>

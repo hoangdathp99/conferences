@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt_login->setFetchMode(PDO::FETCH_ASSOC);
     $admin = $stmt_login->fetch();
     $conn = null;
-    if ($admin['password'] == '') {
+    if ($password == '') {
         function phpAlert($msg) {
             echo '<script type="text/javascript">alert("' . $msg . '")</script>';
         }

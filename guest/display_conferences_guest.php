@@ -53,7 +53,7 @@ $conn = null
                     <div class="sb-sidenav-menu-heading">Danh sách</div>
                     <a class="nav-link" href="http://localhost/conference/guest/display_conferences_guest.php">
                         <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                        Conferences
+                        Các cuộc hội thảo
                     </a>
 <!--                    <a class="nav-link" href="../customer/display_customers.php">-->
 <!--                        <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>-->
@@ -67,7 +67,7 @@ $conn = null
                 </div>
             </div>
             <div class="sb-sidenav-footer">
-                <div class="small">Logged in as:</div>
+                <div class="small">Đăng nhập với quyền:</div>
                 Guest
             </div>
         </nav>
@@ -75,7 +75,7 @@ $conn = null
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid">
-                <h1 class="mt-4">Tables</h1>
+                <h1 class="mt-4">Danh sách</h1>
                 <ol class="breadcrumb mb-4">
                     <!--                    <li class="breadcrumb-item"><a href='http://localhost/conference/conference/display_conferences.php'>Dashboard</a></li>-->
                     <li class="breadcrumb-item active">Conferences</li>
@@ -91,13 +91,12 @@ $conn = null
                                 <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Content</th>
-                                    <th>Address</th>
-                                    <th>Max Amount</th>
-                                    <th>Time</th>
-                                    <th>Image</th>
-                                    <th></th>
+                                    <th>Tên</th>
+                                    <th>Nội dung</th>
+                                    <th>Địa chỉ</th>
+                                    <th>Sô lượng tối đa</th>
+                                    <th>Thời gian</th>
+                                    <th>Ảnh</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -130,16 +129,17 @@ $conn = null
             </div>
         </main>
         <footer class="py-4 bg-light mt-auto">
-            <div class="container-fluid">
-                <div class="d-flex align-items-center justify-content-between small">
-                    <div class="text-muted">Copyright &copy; Your Website 2020</div>
-                    <div>
-                        <a href="#">Privacy Policy</a>
-                        &middot;
-                        <a href="#">Terms &amp; Conditions</a>
-                    </div>
-                </div>
-            </div>
+            <?php include '../layout/footer.php'?>
+<!--            <div class="container-fluid">-->
+<!--                <div class="d-flex align-items-center justify-content-between small">-->
+<!--                    <div class="text-muted">Copyright &copy; Your Website 2020</div>-->
+<!--                    <div>-->
+<!--                        <a href="#">Privacy Policy</a>-->
+<!--                        &middot;-->
+<!--                        <a href="#">Terms &amp; Conditions</a>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
         </footer>
     </div>
 </div>

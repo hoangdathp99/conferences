@@ -101,21 +101,21 @@ $conn = null
                     <div class="sb-sidenav-menu-heading">Danh sách</div>
                     <a class="nav-link" href="http://localhost/conference/conference/display_conferences.php">
                         <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                        Conferences
+                        Các cuộc hội thảo
                     </a>
                     <a class="nav-link" href="../customer/display_customers.php">
                         <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                        Customers
+                        Người tham gia
                     </a>
                     <a class="nav-link" href="../request/request_add_customer.php">
                         <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                        Requests
+                        Yêu cầu tham gia
                     </a>
 
                 </div>
             </div>
             <div class="sb-sidenav-footer">
-                <div class="small">Logged in as:</div>
+                <div class="small">Đăng nhập với quyền:</div>
                 Admin
             </div>
         </nav>
@@ -123,7 +123,7 @@ $conn = null
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid">
-                <h1 class="mt-4">Tables</h1>
+                <h1 class="mt-4">Danh sách</h1>
                 <ol class="breadcrumb mb-4">
 <!--                    <li class="breadcrumb-item"><a href='http://localhost/conference/conference/display_conferences.php'>Dashboard</a></li>-->
                     <li class="breadcrumb-item active">Hội thảo</li>
@@ -149,12 +149,12 @@ $conn = null
                                 <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Content</th>
-                                    <th>Address</th>
-                                    <th>Max Amount</th>
-                                    <th>Time</th>
-                                    <th>Image</th>
+                                    <th>Tên</th>
+                                    <th>Nội dung</th>
+                                    <th>Địa chỉ</th>
+                                    <th>Sô lượng tham gia</th>
+                                    <th>Thời gian</th>
+                                    <th>Ảnh</th>
                                     <th></th>
                                 </tr>
                                 </thead>
