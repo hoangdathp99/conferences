@@ -1,4 +1,8 @@
 <?php
+session_start();
+if(!isset($_SESSION["username"])){
+    header("location:http://localhost/conference/");
+}
 $conference_id = '';
 $customer_id ='';
 if ($_SERVER["REQUEST_METHOD"] == "GET"){
@@ -57,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
                 <!--                <a class="dropdown-item" href="#">Settings</a>-->
                 <!--                <a class="dropdown-item" href="#">Activity Log</a>-->
                 <!--                <div class="dropdown-divider"></div>-->
-                <a class="dropdown-item" href="../login.php">Đăng xuất</a>
+                <a class="dropdown-item" href="../authentication/logout.php">Đăng xuất</a>
             </div>
         </li>
     </ul>
@@ -113,7 +117,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
 
                     </div>
                     <div class="col-9">
-                        <h2>Số lượng tham gia : <?php echo $amount['COUNT(id)']?></h2>
+                        <h3>Số lượng tham gia : <?php echo $amount['COUNT(id)']?></h3>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">

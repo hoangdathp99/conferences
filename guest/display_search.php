@@ -1,36 +1,16 @@
 <?php
-$conference_id = '';
-$customer_id ='';
-if ($_SERVER["REQUEST_METHOD"] == "GET"){
-    include '../database/database.php';
-    if(isset($_GET['id'])) {
-        $conference_id = $_GET['id'];
+include_once '../database/database.php';
+if ($_SERVER["REQUEST_METHOD"] == "POST"){
+    if(isset($_POST['search'])) {
+        $search = $_POST['search'];
     }
-    $stmt_check_amount = $conn->prepare("SELECT COUNT(id) FROM conference_customer WHERE conference_id = $conference_id");
-    $stmt_check_amount->execute();
-    $stmt_check_amount->setFetchMode(PDO::FETCH_ASSOC);
-    $amount = $stmt_check_amount->fetch();
-
-    $stmt_conference = $conn->prepare("SELECT * FROM conferences WHERE id = $conference_id");
-    $stmt_conference->execute();
-    $stmt_conference->setFetchMode(PDO::FETCH_ASSOC);
-    $conference = $stmt_conference->fetch();
-
-//        var_dump($conference);
-
-    $stmt_customers = $conn->prepare("SELECT * FROM conference_customer WHERE conference_id = $conference_id");
-    $stmt_customers->execute();
-    $stmt_customers->setFetchMode(PDO::FETCH_ASSOC);
-    $list_customer_of_conference = $stmt_customers->fetchAll();
-//            $customer_id = 'customer_id';
-//        var_dump($list_customer_of_conference);
-//        $conn = null;
-    $stmt = $conn->prepare("SELECT * FROM customers INNER JOIN conference_customer ON customers.id = conference_customer.customer_id AND conference_id = $conference_id");
+    $sql = "SELECT * FROM conferences WHERE name LIKE '%$search%'";
+    $stmt = $conn->prepare($sql);
     $stmt->execute();
     $stmt->setFetchMode(PDO::FETCH_ASSOC);
     $result = $stmt->fetchAll();
-//        var_dump($result);
     $conn = null;
+    // header('location: http://localhost/conference/conference/admin/display_search.php',true);
 }
 ?>
 <!DOCTYPE html>
@@ -50,13 +30,18 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
     <a class="navbar-brand" href="display_conferences.php">Quản lý cuộc hội thảo</a>
     <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
+    <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0" method="post" action="display_search.php">
+        <div class="input-group">
+            <input class="form-control" type="text" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" name="search"/>
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </form>
     <ul class="navbar-nav ml-auto ml-md-0">
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" id="userDropdown" href="display_conferences.php" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                <!--                <a class="dropdown-item" href="#">Settings</a>-->
-                <!--                <a class="dropdown-item" href="#">Activity Log</a>-->
-                <!--                <div class="dropdown-divider"></div>-->
                 <a class="dropdown-item" href="../">Đăng xuất</a>
             </div>
         </li>
@@ -72,6 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
                         <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                         Các cuộc hội thảo
                     </a>
+
                 </div>
             </div>
             <div class="sb-sidenav-footer">
@@ -85,26 +71,13 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
             <div class="container-fluid">
                 <h1 class="mt-4">Danh sách</h1>
                 <ol class="breadcrumb mb-4">
-                    <li class="breadcrumb-item"><a href="http://localhost/conference/guest/display_conferences_guest.php">Conferences</a></li>
+                    <!--                    <li class="breadcrumb-item"><a href='http://localhost/conference/conference/display_conferences.php'>Dashboard</a></li>-->
+                    <li class="breadcrumb-item active">Conferences</li>
                 </ol>
                 <div class="card mb-4">
                     <div class="card-header" class="col-9">
                         <i class="fas fa-table mr-1"></i>
-                        Danh sách khách tham dự
-                    </div>
-                    <div class="col-3">
-
-                        <a class="nav-link" href="add_customer_guest.php">
-                            <button class="btn btn-primary">
-                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-
-                                Đăng ký tham gia</button>
-                        </a>
-
-
-                    </div>
-                    <div class="col-9">
-                        <h2>Số lượng tham gia : <?php echo $amount['COUNT(id)']?></h2>
+                        Danh sách hội thảo
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -113,20 +86,33 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
                                 <tr>
                                     <th>ID</th>
                                     <th>Tên</th>
-                                    <th>Email</th>
-                                    
+                                    <th>Nội dung</th>
+                                    <th>Địa chỉ</th>
+                                    <th>Sô lượng tối đa</th>
+                                    <th>Thời gian</th>
+                                    <th>Ảnh</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <?php foreach($result as $item): ?>
                                     <tr>
                                         <td><?php echo $item['id']?></td>
-                                        <td><?php echo $item['name']?></td>
-                                        <td><?php echo $item['email']?></td>
-<!--                                        <td>-->
-<!--                                            <span><a href="../customer/edit_customer.php?id=--><?php //echo $item['id']?><!--">Update</a></span>-->
-<!--                                            <span><a href="../customer/delete_customer.php?id=--><?php //echo $item['id']?><!--">Delete</a></span>-->
-<!--                                        </td>-->
+                                        <td>
+                                            <a href="../guest/display_guest.php?id=<?php echo $item['id']?>">
+                                                <?php echo $item['name']?>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="../html/cotent_<?php echo $item['id']?>.html">
+                                                <?php echo $item['content']?>
+                                            </a>
+                                        </td>
+                                        <td><?php echo $item['address']?></td>
+                                        <td><?php echo $item['amount']?></td>
+                                        <td><?php echo $item['time']?></td>
+                                        <td>
+                                            <img src="<?php echo $item['img']?>" width="300" height="200"/>
+                                        </td>
                                     </tr>
                                 <?php endforeach; ?>
                                 </tbody>
@@ -138,16 +124,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
         </main>
         <footer class="py-4 bg-light mt-auto">
             <?php include '../layout/footer.php'?>
-<!--            <div class="container-fluid">-->
-<!--                <div class="d-flex align-items-center justify-content-between small">-->
-<!--                    <div class="text-muted">Copyright &copy; Your Website 2020</div>-->
-<!--                    <div>-->
-<!--                        <a href="#">Privacy Policy</a>-->
-<!--                        &middot;-->
-<!--                        <a href="#">Terms &amp; Conditions</a>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
         </footer>
     </div>
 </div>

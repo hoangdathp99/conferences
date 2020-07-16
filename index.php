@@ -1,4 +1,5 @@
 <?php
+session_start();
 $username = '';
 $password = '';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -16,13 +17,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt_login->setFetchMode(PDO::FETCH_ASSOC);
     $admin = $stmt_login->fetch();
     $conn = null;
-    if ($admin['password'] == '') {
-    function phpAlert($msg) {
-        echo '<script type="text/javascript">alert("' . $msg . '")</script>';
-    }
+    if ($password == '') {
+        function phpAlert($msg) {
+            echo '<script type="text/javascript">alert("' . $msg . '")</script>';
+        }
         phpAlert("wrong pass");
     }
     elseif ($admin['password'] == $password) {
+        $_SESSION['username'] = $username;
         header('location: http://localhost/conference/conference/display_conferences.php',true);
     }
     else{
@@ -30,77 +32,68 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Login</title>
-    <link rel="stylesheet" type="text/css" href="login.css"/>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <style>
-    </style>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Page Title - SB Admin</title>
+    <link href="layout/css/styles.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
 </head>
-<body>
-<!--<div class="bg">-->
-<!--    <div class="container-fluid row">-->
-<!--        <div>-->
-<!--            <h1>Login to continue</h1>-->
-<!--        </div>-->
-<!--        <div class="col-1"></div>-->
-<!--        <div class="col-4 mt-5">-->
-<!--            <div class="h2 mb-3" style="text-align: center; color: white">LOGIN</div>-->
-<!--            <form method="POST" action="">-->
-<!--                <div class="form-group">-->
-<!--                    <label for="exampleInputEmail1" style="color: white">Username</label>-->
-<!--                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter user name" name="username">-->
-<!--                    <small id="emailHelp" class="form-text text-muted" style="color: white">We'll never share your user name with anyone else.</small>-->
-<!--                </div>-->
-<!--                <div class="form-group">-->
-<!--                    <label for="exampleInputPassword1" style="color: white">Password</label>-->
-<!--                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">-->
-<!--                </div>-->
-<!--                <div style="text-align: center">-->
-<!--                    <button type="submit" class="btn btn-primary">Submit</button>-->
-<!--                </div>-->
-<!--            </form>-->
-<!--        </div>-->
-<!--        <div class="col-7"></div>-->
-<!--    </div>-->
-<!--</div>-->
-<div class="wrapper fadeInDown">
-    <div id="formContent">
-        <!-- Tabs Titles -->
+<body class="bg-primary">
+<div id="layoutAuthentication">
+    <div id="layoutAuthentication_content">
+        <main>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-5">
+                        <div class="card shadow-lg border-0 rounded-lg mt-5">
+                            <div class="card-header"><h3 class="text-center font-weight-light my-4">Login</h3></div>
+                            <div class="card-body">
+                                <form method="post">
+                                    <div class="form-group">
+                                        <label class="small mb-1" for="inputEmailAddress">Username</label>
+                                        <input class="form-control py-4" id="inputEmailAddress" type="text" name="username" placeholder="Nhập tên đăng nhập" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="small mb-1" for="inputPassword">Password</label>
+                                        <input class="form-control py-4" id="inputPassword" type="password" name="password" placeholder="Nhập mật khẩu" />
+                                    </div>
 
-        <!-- Icon -->
-        <div class="fadeIn first mt-3">
-            <h2>Quản lý hội thảo</h2>
-        </div>
+                                    <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
+                                        <input type="submit" class="fadeIn fourth" value="Log In">
+                                        <a class = "fadeIn fourth mb-3" href="guest/display_conferences_guest.php">I'm a guest</a>
+                                    </div>
+                                </form>
+                            </div>
 
-        <!-- Login Form -->
-        <form method="post">
-            <input type="text" id="login" class="fadeIn second" name="username" placeholder="username">
-            <input type="text" id="password" class="fadeIn third" name="password" placeholder="password">
-            <input type="submit" class="fadeIn fourth" value="Log In">
-        </form>
-        <div>
-            <a class = "fadeIn fourth mb-3" href="guest/display_conferences_guest.php"><button class="btn btn-primary">I'm a guest</button></a>
-        </div>
-        <!-- Remind Passowrd -->
-        <div id="formFooter">
-            <a class="underlineHover" href="#">Forgot Password?</a>
-        </div>
-
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <div id="layoutAuthentication_footer">
+        <footer class="py-4 bg-light mt-auto">
+            <div class="container-fluid">
+                <div class="d-flex align-items-center justify-content-between small">
+                    <div class="text-muted">Copyright &copy; Your Website 2020</div>
+                    <div>
+                        <a href="#">Privacy Policy</a>
+                        &middot;
+                        <a href="#">Terms &amp; Conditions</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
     </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script src="layout/js/scripts.js"></script>
 </body>
 </html>

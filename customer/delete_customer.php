@@ -1,4 +1,8 @@
 <?php
+session_start();
+if(!isset($_SESSION["username"])){
+    header("location:http://localhost/conference/");
+}
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     if (isset($_GET['id'])) {$id = $_GET['id'];}
     include '../database/database.php';
